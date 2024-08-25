@@ -1,0 +1,4 @@
+1) Base: Prove F(0) or F(1) is true,
+2) Induction Hypotheses: Assume F(k) is true.
+3) Induction Step: Using '2' prove that F(k+1) is true
+ 
