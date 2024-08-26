@@ -1,16 +1,15 @@
 #include <iostream>
 using namespace std;
 
-int SOD(int n,int sum = 0){
+int SOD(int n){
 
     if (n == 0){
-        return sum;
+        return 0;
     }
 
-    sum += (n%10);
-    n = n/10;
+    int SumOfRest = SOD(n/10);
 
-    SOD(n, sum);
+    return n%10 + SumOfRest;
 
 }
 
