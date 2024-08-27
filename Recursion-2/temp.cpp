@@ -1,33 +1,36 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
-void RemoveX(char a[]){
-
-    if (a[0] == '\0'){
+void removeDuplicates(char* str) {
+    // Base case: If the string is empty or has only one character
+    if (str[0] == '\0' || str[1] == '\0') {
         return;
     }
 
-    if (a[0] != 'x'){
-        RemoveX(a+1);
+    // Recursive call for the rest of the string
+    removeDuplicates(str + 1);
 
-    } else {
+    // Check if the first character is a duplicate
+    if (str[0] == str[1]) {
+        // Shift all characters one position to the left
         int i = 1;
-        for (; a[i] != '\0'; i++){
-            a[i-1] = a[i];
+        for (; str[i] != '\0'; i++) {
+            str[i - 1] = str[i];
         }
-        
-        a[i-1] = a[i];
+        str[i - 1] = '\0';  // Null-terminate the string
 
-        RemoveX(a);
+        // Call the function again to check for more duplicates
+        removeDuplicates(str);
     }
-
 }
 
-int main(){
+int main() {
+    char str[] = "qweqweqweqwe";
 
-    char a[] = "jxexyxxtr";
+    removeDuplicates(str);
 
-    cout << RemoveX(a) << endl;
+    cout << str << endl;
 
     return 0;
 }
